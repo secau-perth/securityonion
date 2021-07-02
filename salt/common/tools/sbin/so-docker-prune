@@ -81,7 +81,7 @@ def main(quiet):
             try:
               client.images.remove(tag, force=True)
             except docker.errors.ClientError as e:
-              print(f'Could not remove image {tag}, continuing...')
+              print(f'Could not remove image {tag}, continuing...', file=sys.stderr)
     except (docker.errors.APIError, InvalidVersion) as e:
       print(f'so-{get_so_image_basename(t_list[0])}: {e}', file=sys.stderr)
       exit(1)
